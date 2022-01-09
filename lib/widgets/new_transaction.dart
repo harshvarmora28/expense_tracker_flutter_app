@@ -18,6 +18,7 @@ class NewTransaction extends StatelessWidget {
           TextField(
             decoration: InputDecoration(labelText: "Title"),
             controller: titleController,
+            autocorrect: false,
           ),
           TextField(
             decoration: InputDecoration(labelText: "Amount"),
