@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(),
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        accentColor: Colors.amber
+        accentColor: Colors.amber,
+        fontFamily: "Quicksand",
+        appBarTheme: AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith(headline6: TextStyle(fontFamily: "OpenSans", fontSize: 20, fontWeight: FontWeight.bold)))
       ),
     );
   }
@@ -27,10 +29,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: "t1", title: "New Course", amount: 385, date: DateTime.now()),
-    Transaction(
-        id: "t2", title: "Mobile Recharge", amount: 799, date: DateTime.now())
+    // Transaction(
+    //     id: "t1", title: "New Course", amount: 385, date: DateTime.now()),
+    // Transaction(
+    //     id: "t2", title: "Mobile Recharge", amount: 799, date: DateTime.now())
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Flutter App', style: TextStyle(fontFamily: "OpenSans"),),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
