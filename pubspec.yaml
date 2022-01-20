@@ -73,6 +73,12 @@ flutter:
         - asset: assets/fonts/Quicksand-Regular.ttf
         - asset: assets/fonts/Quicksand-Bold.ttf
           weight: 700
+
+    - family: SofiaPro
+      fonts:
+        - asset: assets/fonts/Sofia-pro-Regular.ttf
+        - asset: assets/fonts/Sofia-pro-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
