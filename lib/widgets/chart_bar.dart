@@ -14,9 +14,9 @@ class ChartBar extends StatelessWidget {
         Container(
           height: 20,
           child: FittedBox(
-            child: Text("₹${spendingAmount.toStringAsFixed(0)}")),
+            child: Text("₹${spendingAmount.toStringAsFixed(0)}", style: TextStyle(color: Colors.purple.shade50),)),
         ),
-        SizedBox(height: 4,),
+        SizedBox(height: 10,),
         Container(
           height: 60,
           width: 10,
@@ -37,8 +37,8 @@ class ChartBar extends StatelessWidget {
             ) 
           ],),
         ),
-        SizedBox(height: 4,),
-        Text(label),
+        SizedBox(height: 10,),
+        Text(label, style: TextStyle(color: Colors.white60),),
       ]
     );
   }

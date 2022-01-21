@@ -7,6 +7,13 @@ import 'package:flutter_complete_guide/widgets/chart_bar.dart';
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
 
+  
+  // Defining Colors
+  var bcgColor = const Color(0xff1D0D25);
+  var addIconColor = const Color(0xff577FFF);
+  var cardBcgColor = const Color(0x9033203E);
+
+
   Chart(this.recentTransactions);
 
   List<Map<String, Object>> get groupedTransactionValues {
@@ -39,10 +46,14 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      color: cardBcgColor,
       elevation: 6,
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupedTransactionValues.map((data) {
