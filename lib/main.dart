@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Wallet.me',
       home: MyHomePage(),
       theme: ThemeData(
           primarySwatch: Colors.purple,
@@ -90,8 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Flutter App',
-          style: TextStyle(fontFamily: "OpenSans"),
+          'Wallet.me',
+          style: TextStyle(fontFamily: "SofiaPro"),
         ),
         actions: <Widget>[
           IconButton(

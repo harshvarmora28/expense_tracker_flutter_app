@@ -47,7 +47,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/no_transactions_yet.jpg
+    - assets/images/no_transactions_yet.png
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,8 +76,8 @@ flutter:
 
     - family: SofiaPro
       fonts:
-        - asset: assets/fonts/Sofia-pro-Regular.ttf
-        - asset: assets/fonts/Sofia-pro-Bold.ttf
+        - asset: assets/fonts/Sofia-pro-Regular.otf
+        - asset: assets/fonts/Sofia-pro-Bold.otf
           weight: 700
   #
   # For details regarding fonts from package dependencies,
