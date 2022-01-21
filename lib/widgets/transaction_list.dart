@@ -7,6 +7,11 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function deleteTx;
 
+  // Defining Colors
+  var cardBcgColor = const Color(0x9033203E);
+  var addIconColor = const Color(0xff577FFF);
+  var bcgColor = const Color(0xff1D0D25);
+
   TransactionList(this.transactions, this.deleteTx);
 
   @override
@@ -42,28 +47,41 @@ class TransactionList extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 return Card(
                   elevation: 6,
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  color: cardBcgColor,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                   child: ListTile(
                     leading: CircleAvatar(
+                      backgroundColor: Colors.pink.shade100,
                       radius: 30,
                       child: Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
-                            child: Text("₹${transactions[index].amount}")),
+                          child: Text(
+                            "₹${transactions[index].amount}",
+                            style: TextStyle(
+                                color: bcgColor, fontWeight: FontWeight.w700),
+                          ),
+                        ),
                       ),
                     ),
                     title: Text(
                       transactions[index].title,
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     subtitle: Text(
-                        DateFormat.yMMMd().format(transactions[index].date)),
+                      DateFormat.yMMMd().format(transactions[index].date),
+                      style: TextStyle(
+                          color: Colors.white60, fontWeight: FontWeight.w200),
+                    ),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),
-                      color: Colors.purple,
+                      color: addIconColor,
                       onPressed: () {
                         deleteTx(transactions[index].id);
                       },
