@@ -31,9 +31,10 @@ class TransactionList extends StatelessWidget {
                 Text(
                   "No transactions yet, Keep saving!",
                   style: TextStyle(
-                      fontFamily: "OpenSans",
+                      fontFamily: "SofiaPro",
                       fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                      color: Colors.purple.shade50,
+                      fontWeight: FontWeight.w600),
                 )
               ],
             )

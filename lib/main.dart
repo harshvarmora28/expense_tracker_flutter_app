@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wallet.me',
+      title: 'wallet.me',
       home: MyHomePage(),
       theme: ThemeData(
           primarySwatch: Colors.purple,
@@ -39,6 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // Transaction(
     //     id: "t2", title: "Mobile Recharge", amount: 799, date: DateTime.now())
   ];
+
+  // Defining Colors
+  var bcgColor = const Color(0xff1D0D25);
+  var addIconColor = const Color(0xff577FFF);
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -88,11 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bcgColor,
       appBar: AppBar(
+        backgroundColor: bcgColor,
         title: Text(
-          'Wallet.me',
-          style: TextStyle(fontFamily: "SofiaPro"),
-        ),
+            'Dashboard',
+            style: TextStyle(fontFamily: "SofiaPro", fontWeight: FontWeight.w600),
+          ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -112,7 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        backgroundColor: addIconColor,
+        child: Icon(Icons.add, color: Colors.white,),
         onPressed: () => _startAddNewTransaction(context),
       ),
     );
