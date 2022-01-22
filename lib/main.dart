@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'wallet.me',
       home: MyHomePage(),
       theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
+          // primarySwatch: Colors.purple,
+          primaryColor: Colors.purple.shade50,
+          accentColor: Colors.blue.shade300,
           fontFamily: "SofiaPro",
           appBarTheme: AppBarTheme(
               textTheme: ThemeData.light().textTheme.copyWith(
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   // Defining Colors
-  var bcgColor = const Color(0xff1D0D25);
+  var bcgColor = const Color(0xff1b161d);
   var addIconColor = const Color(0xff577FFF);
 
   List<Transaction> get _recentTransactions {
@@ -70,6 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
+      backgroundColor: bcgColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       context: ctx,
       builder: (_) {
         return GestureDetector(
@@ -95,14 +100,21 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: bcgColor,
       appBar: AppBar(
         backgroundColor: bcgColor,
-        title: Text(
-            'Dashboard',
-            style: TextStyle(fontFamily: "SofiaPro", fontWeight: FontWeight.w600),
-          ),
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+              'Dashboard',
+              style: TextStyle(fontFamily: "SofiaPro", fontWeight: FontWeight.w600),
+            ),
+        ),
+          elevation: 0,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _startAddNewTransaction(context),
+          Container(
+            margin: EdgeInsets.all(10.0),
+            child: IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _startAddNewTransaction(context),
+            ),
           ),
         ],
       ),
@@ -117,10 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: addIconColor,
-        child: Icon(Icons.add, color: Colors.white,),
-        onPressed: () => _startAddNewTransaction(context),
+      floatingActionButton: Container(
+        margin: EdgeInsets.all(10.0),
+        child: FloatingActionButton(
+          backgroundColor: addIconColor,
+          child: Icon(Icons.add, color: Colors.white,),
+          onPressed: () => _startAddNewTransaction(context),
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class Chart extends StatelessWidget {
   // Defining Colors
   var bcgColor = const Color(0xff1D0D25);
   var addIconColor = const Color(0xff577FFF);
-  var cardBcgColor = const Color(0x9033203E);
+  var cardBcgColor = const Color(0x90302636);
 
 
   Chart(this.recentTransactions);
