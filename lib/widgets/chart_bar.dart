@@ -4,12 +4,13 @@ class ChartBar extends StatelessWidget {
   final String label;
   final double spendingAmount;
   final double spendingPctOfTotal;
+  final double totalExpense;
 
 // Defining Colors
   var barBcgColor = const Color(0x5087bfff);
   var barBorColor = const Color(0x4087bfff);
 
-  ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal);
+  ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal, this.totalExpense);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class ChartBar extends StatelessWidget {
         child: FittedBox(
             child: Text(
           "₹${spendingAmount.toStringAsFixed(0)}",
-          style: TextStyle(color: Colors.purple.shade50, fontWeight: FontWeight.w700),
+          style: TextStyle(
+              color: Colors.purple.shade50, fontWeight: FontWeight.w700),
         )),
       ),
       SizedBox(

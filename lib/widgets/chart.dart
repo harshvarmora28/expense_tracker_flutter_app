@@ -6,6 +6,7 @@ import 'package:flutter_complete_guide/widgets/chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
+  final List<Transaction> userTransactions;
 
   // Defining Colors
   var bcgColor = const Color(0xff1D0D25);
@@ -13,7 +14,7 @@ class Chart extends StatelessWidget {
   var cardBcgColor = const Color(0x90302636);
   var totalExpColor = const Color(0xffffd45e);
 
-  Chart(this.recentTransactions);
+  Chart(this.recentTransactions, this.userTransactions);
 
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
@@ -40,6 +41,16 @@ class Chart extends StatelessWidget {
     return groupedTransactionValues.fold(0.0, (sum, item) {
       return sum + item["amount"];
     });
+  }
+
+  double get totalExpenses {
+    double _total = 0.0;
+    userTransactions.forEach(
+      (expense) {
+          _total = _total + expense.amount;
+      },
+    );
+    return _total;
   }
 
   @override
@@ -72,7 +83,8 @@ class Chart extends StatelessWidget {
                         data["amount"],
                         totalSpending == 0.0
                             ? 0.0
-                            : (data["amount"] as double) / totalSpending));
+                            : (data["amount"] as double) / totalSpending,
+                        totalExpenses == 0.0 ? 0.0 : (totalExpenses)));
               }).toList(),
             ),
             Card(
@@ -90,7 +102,7 @@ class Chart extends StatelessWidget {
                   child: FittedBox(
                     alignment: Alignment.center,
                     child: Text(
-                      "₹900.56",
+                      "₹${totalExpenses.toStringAsFixed(0)}",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
