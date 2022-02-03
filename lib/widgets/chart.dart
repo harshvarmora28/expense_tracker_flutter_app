@@ -55,64 +55,67 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: cardBcgColor,
-      elevation: 6,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 10),
-        child: Column(
-          children: [
-            Text(
-              "Expenses in the last 7 Days",
-              style: TextStyle(color: Colors.white60),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: groupedTransactionValues.map((data) {
-                return Flexible(
-                    fit: FlexFit.tight,
-                    child: ChartBar(
-                        data["day"],
-                        data["amount"],
-                        totalSpending == 0.0
-                            ? 0.0
-                            : (data["amount"] as double) / totalSpending,
-                        totalExpenses == 0.0 ? 0.0 : (totalExpenses)));
-              }).toList(),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(45.0),
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.44,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: cardBcgColor,
+        elevation: 6,
+        margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 24, horizontal: 10),
+          child: Column(
+            children: [
+              Text(
+                "Expenses in the last 7 Days",
+                style: TextStyle(color: Colors.white60),
               ),
-              color: totalExpColor,
-              elevation: 6,
-              margin: EdgeInsets.only(top: 20, bottom: 3),
-              child: Padding(
-                padding: const EdgeInsets.all(7),
-                child: Container(
-                  width: 60,
-                  height: 25,
-                  child: FittedBox(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "₹${totalExpenses.toStringAsFixed(0)}",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: bcgColor),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: groupedTransactionValues.map((data) {
+                  return Flexible(
+                      fit: FlexFit.tight,
+                      child: ChartBar(
+                          data["day"],
+                          data["amount"],
+                          totalSpending == 0.0
+                              ? 0.0
+                              : (data["amount"] as double) / totalSpending,
+                          totalExpenses == 0.0 ? 0.0 : (totalExpenses)));
+                }).toList(),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(45.0),
+                ),
+                color: totalExpColor,
+                elevation: 6,
+                margin: EdgeInsets.only(top: 20, bottom: 3),
+                child: Padding(
+                  padding: const EdgeInsets.all(7),
+                  child: Container(
+                    width: 60,
+                    height: 25,
+                    child: FittedBox(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "₹${totalExpenses.toStringAsFixed(0)}",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: bcgColor),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
