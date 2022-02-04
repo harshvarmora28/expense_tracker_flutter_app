@@ -62,93 +62,100 @@ class _NewTransactionState extends State<NewTransaction> {
 
     FocusNode myFocusNode = new FocusNode();
 
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: bcgColor,
-        child: Container(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          TextField(
-            style: TextStyle(color: Colors.white),
-            cursorColor: Colors.white,
-            decoration: InputDecoration(labelText: "Title",
-            labelStyle: TextStyle(
-                color: myFocusNode.hasFocus ? Colors.purple.shade50 : Colors.purple.shade50
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.purple.shade50
-              )
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide()
-            ),
-            ),
-            controller: _titleController,
-            autocorrect: false,
-            onSubmitted: (_) => _submitData(),
-          ),
-          SizedBox(height: 14,),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            cursorColor: Colors.white,
-            decoration: InputDecoration(labelText: "Amount",
-            labelStyle: TextStyle(
-                color: myFocusNode.hasFocus ? Colors.purple.shade50 : Colors.purple.shade50
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.purple.shade50
-              )
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide()
-            ),
-            ),
-            controller: _amountController,
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            onSubmitted: (_) => _submitData(),
-          ),
-          SizedBox(height: 14,),
-          Container(
-            height: 80,
-            child: Row(
-              children: [
-                Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                  _selectedDate == null
-                        ? "No Date Chosen!"
-                        : DateFormat.yMMMd().format(_selectedDate),
-                  style: TextStyle(fontWeight: FontWeight.w400, color: Colors.blueGrey.shade100),
-                ),
-                    )),
-                FlatButton(
-                  textColor: Colors.white,
-                  onPressed: _presentDatePicker,
-                  child: Text(
-                    "Choose Date",
-                    style: TextStyle(fontWeight: FontWeight.w600),
-                  ),
+    return SingleChildScrollView(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: bcgColor,
+          child: Container(
+        padding: EdgeInsets.only(
+          top: 20,
+          left: 20,
+          right: 20,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 20
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            TextField(
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(labelText: "Title",
+              labelStyle: TextStyle(
+                  color: myFocusNode.hasFocus ? Colors.purple.shade50 : Colors.purple.shade50
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.purple.shade50
                 )
-              ],
+              ),
+              border: OutlineInputBorder(
+                borderSide: BorderSide()
+              ),
+              ),
+              controller: _titleController,
+              autocorrect: false,
+              onSubmitted: (_) => _submitData(),
             ),
-          ),
-          RaisedButton(
-              onPressed: _submitData,
-              child: Text("Add Transaction"),
-              color: addIconColor,
-              textColor: Colors.white,
-              elevation: 6,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)))
-        ],
-      ),
-    ));
+            SizedBox(height: 14,),
+            TextField(
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              decoration: InputDecoration(labelText: "Amount",
+              labelStyle: TextStyle(
+                  color: myFocusNode.hasFocus ? Colors.purple.shade50 : Colors.purple.shade50
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.purple.shade50
+                )
+              ),
+              border: OutlineInputBorder(
+                borderSide: BorderSide()
+              ),
+              ),
+              controller: _amountController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (_) => _submitData(),
+            ),
+            SizedBox(height: 14,),
+            Container(
+              height: 80,
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                    _selectedDate == null
+                          ? "No Date Chosen!"
+                          : DateFormat.yMMMd().format(_selectedDate),
+                    style: TextStyle(fontWeight: FontWeight.w400, color: Colors.blueGrey.shade100),
+                  ),
+                      )),
+                  FlatButton(
+                    textColor: Colors.white,
+                    onPressed: _presentDatePicker,
+                    child: Text(
+                      "Choose Date",
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            RaisedButton(
+                onPressed: _submitData,
+                child: Text("Add Transaction"),
+                color: addIconColor,
+                textColor: Colors.white,
+                elevation: 6,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)))
+          ],
+        ),
+      )),
+    );
   }
 }

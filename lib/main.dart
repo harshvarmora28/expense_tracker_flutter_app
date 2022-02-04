@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_complete_guide/widgets/new_transaction.dart';
 import 'package:flutter_complete_guide/widgets/transaction_list.dart';
@@ -11,6 +12,10 @@ import 'dart:convert';
 
 Future<void> main() async {
   await dotenv.load();
+
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(MyApp());
   MobileAds.instance.initialize();
@@ -61,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
         size: AdSize.banner,
         // adUnitId: BannerAd.testAdUnitId,
         // adUnitId: "ca-app-pub-4327821905067090/7464473777",
-        adUnitId: dotenv.env["STATIC_AD_UNIT_ID"] ?? "STATIC_AD_UNIT_ID not found!",
+        adUnitId:
+            dotenv.env["STATIC_AD_UNIT_ID"] ?? "STATIC_AD_UNIT_ID not found!",
         listener: BannerAdListener(onAdLoaded: (ad) {
           setState(() {
             staticAdLoaded = true;
