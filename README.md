@@ -1,6 +1,6 @@
 # expense_tracker_app
 
-A new Flutter project.
+A Flutter App to keep track of your daily(weekly) expenses.
 
 ## Getting Started
 
